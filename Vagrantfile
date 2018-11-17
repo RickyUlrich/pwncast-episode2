@@ -32,12 +32,16 @@ Vagrant.configure("2") do |config|
     # pwntools stuff
     apt-get install -y python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential
     python -m pip install --upgrade pip
-    python -m pip install --upgrade pwntools
+    python -m pip install --upgrade pwntools ipython
 
     # i386 stuff
     dpkg --add-architecture i386
     apt-get update -y
     apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386 lib32z1
+
+    cd /tmp
+    git clone https://github.com/radare/radare2 && cd radare2
+    sys/install.sh
   SHELL
 
 end
