@@ -5,3 +5,16 @@ RDI, RSI, RDX, RCX, R8, R9
 
 # amd64 system calling convention
 %rdi	%rsi	%rdx	%r10	%r8	%r9
+
+# signed vs unsigned mov
+
+# unsigned mov
+rsi = 0x80000000000001
+mov rax, rsi
+rax = 0x80000000000001
+
+# signed mov
+rsi = 0x80000000000001
+mov rax, rsi
+rax = ?
+
