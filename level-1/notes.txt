@@ -1,0 +1,7 @@
+
+
+# x64 calling convention
+RDI, RSI, RDX, RCX, R8, R9
+
+# amd64 system calling convention
+%rdi	%rsi	%rdx	%r10	%r8	%r9
