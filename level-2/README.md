@@ -1,7 +1,9 @@
 
-# x64 calling convention
+## x64 calling convention
 RDI, RSI, RDX, RCX, R8, R9
 
+## Reverse engineering of code
+```
 # global variable
 char *executable_buffer_ptr;
 
@@ -34,3 +36,4 @@ while (true) {
 		break;
         }
 }
+```
