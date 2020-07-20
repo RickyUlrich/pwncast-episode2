@@ -44,4 +44,10 @@ Vagrant.configure("2") do |config|
     sys/install.sh
   SHELL
 
+  # provision/config
+  config.vm.provision "shell", privileged: false, inline: <<-SHELL
+    cd $HOME
+    git clone https://github.com/niklasb/libc-database
+  SHELL
+
 end
